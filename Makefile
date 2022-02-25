@@ -1,39 +1,33 @@
 CC=g++
 CFLAGS=-c -ansi -Wall -pedantic-errors -O0
 
-all: linkedlist musicstream
+all: bst ars
 
-musicstream: main_musicstream.o album.o artist.o playlist.o profile.o song.o musicstream.o
-	$(CC) main_musicstream.o album.o artist.o playlist.o profile.o song.o musicstream.o -o musicstream
+ars: main_ars.o flight.o passenger.o ticket.o ars.o
+	$(CC) main_ars.o flight.o passenger.o ticket.o ars.o -o ars
 
-linkedlist: main_linkedlist.o
-	$(CC) main_linkedlist.o -o linkedlist
+bst: main_bst.o
+	$(CC) main_bst.o -o bst
 
-main_musicstream.o: main_musicstream.cpp
-	$(CC) $(CFLAGS) main_musicstream.cpp -o main_musicstream.o
+main_ars.o: main_ars.cpp
+	$(CC) $(CFLAGS) main_ars.cpp -o main_ars.o
 
-main_linkedlist.o: main_linkedlist.cpp
-	$(CC) $(CFLAGS) main_linkedlist.cpp -o main_linkedlist.o
+main_bst.o: main_bst.cpp
+	$(CC) $(CFLAGS) main_bst.cpp -o main_bst.o
 
-album.o: Album.cpp Album.h
-	$(CC) $(CFLAGS) Album.cpp -o album.o
+flight.o: Flight.cpp Flight.h
+	$(CC) $(CFLAGS) Flight.cpp -o flight.o
 
-artist.o: Artist.cpp Artist.h
-	$(CC) $(CFLAGS) Artist.cpp -o artist.o
+passenger.o: Passenger.cpp Passenger.h
+	$(CC) $(CFLAGS) Passenger.cpp -o passenger.o
 
-playlist.o: Playlist.cpp Playlist.h
-	$(CC) $(CFLAGS) Playlist.cpp -o playlist.o
+ticket.o: Ticket.cpp Ticket.h
+	$(CC) $(CFLAGS) Ticket.cpp -o ticket.o
 
-profile.o: Profile.cpp Profile.h
-	$(CC) $(CFLAGS) Profile.cpp -o profile.o
-
-song.o: Song.cpp Song.h
-	$(CC) $(CFLAGS) Song.cpp -o song.o
-
-musicstream.o: MusicStream.cpp MusicStream.h Album.cpp Album.h Artist.cpp Artist.h Playlist.cpp Playlist.h Profile.cpp Profile.h Song.cpp Song.h LinkedList.h Node.h
-	$(CC) $(CFLAGS) MusicStream.cpp -o musicstream.o
+ars.o: AirlineReservationSystem.cpp AirlineReservationSystem.h Flight.cpp Flight.h Passenger.cpp Passenger.h Ticket.cpp Ticket.h BST.h BSTNode.h
+	$(CC) $(CFLAGS) AirlineReservationSystem.cpp -o ars.o
 
 clean:
 	rm *o
-	rm linkedlist
-	rm musicstream
+	rm bst
+	rm ars
